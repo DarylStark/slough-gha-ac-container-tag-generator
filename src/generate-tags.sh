@@ -11,7 +11,7 @@ if [ "${GITHUB_REF_NAME}" == "main" ]; then
     TAGS="${IMAGE_NAME}:latest"
 fi
 
-if [ "${GITHUB_REF_NAME}" == "DEV" ]; then
+if [ "${GITHUB_REF_NAME}" == "dev" ]; then
     TAGS="${IMAGE_NAME}:latest-dev"
 fi
 
