@@ -23,4 +23,4 @@ fi
 SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)
 TAGS="${TAGS}:${IMAGE_NAME}:${SHORT_SHA}"
 
-echo "tag-name="${TAGS}"" >> "$GITHUB_OUTPUT"
+echo "tags="${TAGS}"" >> "$GITHUB_OUTPUT"
