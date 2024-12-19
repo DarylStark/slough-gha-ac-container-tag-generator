@@ -1,7 +1,7 @@
 #!/bin/bash
 
 version=$1
-echo $version
+echo "Version: ${version}"
 
 export REPO_NAME=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
 export MAIN_TAG="${GITHUB_REF_NAME}"
