@@ -4,6 +4,13 @@ author: Daryl Stark
 description: GitHub action to generate container tags based on the branch
 
 inputs:
+  container-repository:
+    description: The name for the repository for the container.
+    required: true
+  container-name:
+    description: The name for the container. Defaults to the reponame
+    required: false
+    default: ""
   version:
     description: The version of the software. Used for a tag
     required: false
@@ -22,5 +29,9 @@ runs:
       shell: bash
     - name: Set container tags
       id: tag-generator
-      run: ${{ github.action_path }}/src/generate-tags.sh "${{ inputs.version }}"
+      env:
+        INPUT_CONTAINER_REPOSITORY: ${{ inputs.container-repository }}
+        INPUT_CONTAINER_NAME: ${{ inputs.container-name }}
+        INPUT_VERSION: ${{ inputs.version }}
+      run: ${{ github.action_path }}/src/generate-tags.sh
       shell: bash
