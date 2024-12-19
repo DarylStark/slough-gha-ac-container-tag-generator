@@ -7,7 +7,7 @@ fi
 
 IMAGE_NAME="${INPUT_CONTAINER_REPOSITORY}/${INPUT_CONTAINER_NAME}"
 
-env
+env | sort
 
 exit
 
