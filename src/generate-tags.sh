@@ -15,6 +15,14 @@ if [ "${GITHUB_REF_NAME}" == "dev" ]; then
     TAGS="${IMAGE_NAME}:latest-dev"
 fi
 
+if [ "${INPUT_VERSION}" != "" ]; then
+    TAGS="${TAGS},${IMAGE_NAME}:${INPUT_VERSION}"
+fi
+
+# Add the tag for the SHA hash of the commit
+SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-16)
+TAGS="${TAGS}:${IMAGE_NAME}:${SHORT_SHA}"
+
 echo "Tags: ${TAGS}"
 
 env | sort
