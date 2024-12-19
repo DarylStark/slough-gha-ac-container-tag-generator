@@ -3,6 +3,8 @@
 version=$1
 echo "Version: ${version}"
 
+env | sort
+
 export REPO_NAME=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
 export MAIN_TAG="${GITHUB_REF_NAME}"
 if [ "${{ github.ref_name }}" == "main" ]; then
