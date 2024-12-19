@@ -1,6 +1,14 @@
 #!/bin/bash
 
-env | sort
+if [ "${INPUT_CONTAINER_NAME}" = "" ]; then
+    # No container name given, extract it from the GITHUB_REPOSITORY
+    INPUT_CONTAINER_NAME=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
+fi
+
+IMAGE_NAME="${INPUT_CONTAINER_REPOSITORY}/${INPUT_CONTAINER_NAME}"
+
+env
+
 exit
 
 export REPO_NAME=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
