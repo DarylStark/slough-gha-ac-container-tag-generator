@@ -20,7 +20,7 @@ if [ "${INPUT_VERSION}" != "" ]; then
 fi
 
 # Add the tag for the SHA hash of the commit
-SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-16)
+SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-6)
 TAGS="${TAGS}:${IMAGE_NAME}:${SHORT_SHA}"
 
 echo "Tags: ${TAGS}"
