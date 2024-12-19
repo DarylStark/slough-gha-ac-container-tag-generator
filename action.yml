@@ -17,7 +17,7 @@ runs:
   using: "composite"
   steps:
     - name: Set permissions for script
-      id: tag-generator
+      id: permissions
       run: chmod +x ${{ github.action_path }}/src/generate-tags.sh
       shell: bash
     - name: Set container tags
