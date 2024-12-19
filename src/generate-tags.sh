@@ -1,11 +1,21 @@
 #!/bin/bash
 
-if [ "${INPUT_CONTAINER_NAME}" = "" ]; then
+if [ "${INPUT_CONTAINER_NAME}" == "" ]; then
     # No container name given, extract it from the GITHUB_REPOSITORY
     INPUT_CONTAINER_NAME=$(echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2)
 fi
 
-export IMAGE_NAME="${INPUT_CONTAINER_REPOSITORY}/${INPUT_CONTAINER_NAME}"
+IMAGE_NAME="${INPUT_CONTAINER_REPOSITORY}/${INPUT_CONTAINER_NAME}"
+
+if [ "${GITHUB_REF_NAME}" == "main" ]; then
+    TAGS="${IMAGE_NAME}:latest"
+fi
+
+if [ "${GITHUB_REF_NAME}" == "DEV" ]; then
+    TAGS="${IMAGE_NAME}:latest-dev"
+fi
+
+echo "Tags: ${TAGS}"
 
 env | sort
 
