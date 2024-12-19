@@ -13,7 +13,6 @@ jobs:
       - uses: ./
         id: generate-version
         with:
-          version: 1.0.0
           container-repository: test-repo
           container-name: test-name
   publish:
