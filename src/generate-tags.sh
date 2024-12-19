@@ -21,6 +21,6 @@ fi
 
 # Add the tag for the SHA hash of the commit
 SHORT_SHA=$(echo ${GITHUB_SHA} | cut -c1-7)
-TAGS="${TAGS}:${IMAGE_NAME}:${SHORT_SHA}"
+TAGS="${TAGS},${IMAGE_NAME}:${SHORT_SHA}"
 
 echo "tags="${TAGS}"" >> "$GITHUB_OUTPUT"
